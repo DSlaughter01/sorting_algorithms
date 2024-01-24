@@ -1,27 +1,26 @@
-/* #include <vector>
-using namespace std;
+#include "SortingAlgorithm.hpp"
 
-vector<int> bubble_sort(vector<int> v) {
+std::vector<int> bubbleSort(std::vector<int> v) {
     
     while (true) {
-        int change_count = 0;
+        int changeCount = 0;
 
         for (int i = 0; i < v.size() - 1; i++) {
             if (v[i + 1] < v[i]) {
                 int temp = v[i];
                 v[i] = v[i + 1];
                 v[i + 1] = temp;
-                change_count++;
+                changeCount++;
             }
         }
 
-        if (change_count == 0) {
+        if (changeCount == 0) {
             return v;
         }
     }  
 }
 
-vector<int> insertion_sort(vector<int> v) {
+std::vector<int> insertionSort(std::vector<int> v) {
 
     for (int i = 1; i < v.size(); i++) {
         int current = v[i];
@@ -38,22 +37,26 @@ vector<int> insertion_sort(vector<int> v) {
     return v;
 }
 
-vector<int> selection_sort(vector<int> v) {
+std::vector<int> selectionSort(std::vector<int> v) {
 
     for (int i = 0; i < v.size(); i++) {
-        int min_idx = 0;
-        int min = v[i];
-        for (int j = 0; j < v.size(); j++) {
+
+        int minIdx = i;
+        int minVal = v[i];
+
+        for (int j = i; j < v.size(); j++) {
+
             // Find the index of the minimum
-            if (v[j] < min) {
-                min = v[j];
-                min_idx = j;
-            }
-        v.erase(v.begin() + j);
-        v.insert(v.begin(), min);        
+            if (v[j] < minVal) {
+                minIdx = j;
+                minVal = v[j];
+            }        
         }
+
+        // Swap
+        std::swap(v[i], v[minIdx]);
+
     }
+
     return v;
 }
-
- */
